@@ -1,0 +1,6 @@
+<h3>New Ingredient</h3>
+<%= simple_form_for @cocktail, url: cocktails_path, method: :post do |f| %>
+  <%= f.input :description %>
+  <%= f.input :ingredient %>
+  <%= f.submit 'Add ingredient', class: 'btn btn-primary' %>
+<% end %>
