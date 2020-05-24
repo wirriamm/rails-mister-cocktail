@@ -9,6 +9,11 @@
 require 'open-uri'
 require 'json'
 
+puts 'Clearing all db entries for cocktails, ingredients and doses tables'
+Cocktail.destroy_all
+Ingredient.destroy_all
+Dose.destroy_all
+
 puts 'Seeding ingredients from API'
 ingredients_url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
 ingredients_serialized = open(ingredients_url).read
@@ -19,5 +24,3 @@ ingredients['drinks'].each do |hash|
   puts "  Saved ingredient: #{hash['strIngredient1']}"
 end
 puts 'Saved all ingredients'
-
-# puts
