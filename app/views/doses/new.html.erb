@@ -1,6 +1,7 @@
 <h3>New Ingredient</h3>
 <%= simple_form_for [@cocktail, @dose], url: cocktail_doses_path, method: :post do |f| %>
-  <%= f.input :cocktail, input_html: { value: @cocktail.name } %>
+  <%#= raise %>
+  <%= f.association :cocktail, selected: params[:cocktail_id].to_i %>
   <%= f.input :description %>
   <%= f.association :ingredient, label_method: :name %>
   <%= f.submit 'Add ingredient', class: 'btn btn-primary' %>
