@@ -11,6 +11,7 @@
   </head>
 
   <body>
+
     <nav class="navbar navbar-light bg-light p-3">
       <h1 class="m-0"><%= link_to 'Mister Cocktail', cocktails_path %></h1>
       <%= link_to 'New Cocktail', new_cocktail_path, class: "btn btn-outline-primary" %>
@@ -19,5 +20,6 @@
     <div class="container py-3">
       <%= yield %>
     </div>
+
   </body>
 </html>
