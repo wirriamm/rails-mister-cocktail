@@ -5,10 +5,12 @@
 
     <% @cocktails.each do |cocktail| %>
       <div class="col-4">
-        <div class="card">
+        <div class="card m-3 rounded-lg">
           <%= cl_image_tag(cocktail.photo.key,
-            width: 150, height: 150, crop: :fill) %>
-          <p><%= link_to cocktail.name, cocktail_path(cocktail) %></p>
+            width: 150, height: 150, crop: :limit, class: 'card-img-top rounded-top', style: 'height:200px') %>
+          <div class="card-body">
+          <p class="m-0"><%= link_to cocktail.name, cocktail_path(cocktail) %></p>
+          </div>
         </div>
       </div>
     <% end %>
