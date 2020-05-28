@@ -9,7 +9,7 @@
 require 'open-uri'
 require 'json'
 
-puts 'Clearing all db entries for cocktails, ingredients and doses tables'
+puts 'Clearing all db entries of cocktails, ingredients and doses tables'
 Cocktail.destroy_all
 Ingredient.destroy_all
 Dose.destroy_all
@@ -24,3 +24,24 @@ ingredients['drinks'].each do |hash|
   puts "  Saved ingredient: #{hash['strIngredient1']}"
 end
 puts 'Saved all ingredients'
+
+puts 'Create 5 seeded cocktails'
+
+def get_image_url(c_name)
+  api_url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=#{c_name}"
+  cocktail_serialized = open(api_url).read
+  cocktail_info = JSON.parse(cocktail_serialized)
+  img_url = cocktail_info['drinks'][0]['strDrinkThumb']
+end
+
+cocktails = ['Mojito', 'Bloody Mary', 'Sex on the Beach', 'Margarita', 'Pina Colada']
+
+cocktails.each do |cocktail|
+  puts "Creating cocktail #{cocktail}"
+  c = Cocktail.create(name: cocktail)
+  img_url = get_image_url(cocktail)
+  file = URI.open(img_url)
+  c.photo.attach(io: file, filename: "#{cocktail}.png", content_type: 'image/png')
+end
+
+puts 'Done creating cocktails'
