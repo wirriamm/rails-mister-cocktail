@@ -1,14 +1,16 @@
-<h2>Available Cocktails</h2>
+<div class="d-flex justify-content-center">
+  <h2 class="bright-shadow">Available Cocktails</h2>
+</div>
 
 <div class="card-container">
   <div class="row justify-content-center">
 
     <% @cocktails.each do |cocktail| %>
       <div class="col-4">
-        <div class="card m-3 rounded-lg">
+        <div class="card m-3 rounded bg-dark-lg bright-box-shadow">
           <%= cl_image_tag(cocktail.photo.key,
             width: 150, height: 150, crop: :limit, class: 'card-img-top rounded-top', style: 'height:200px') %>
-          <div class="card-body">
+          <div class="card-body text-center">
           <p class="m-0"><%= link_to cocktail.name, cocktail_path(cocktail) %></p>
           </div>
         </div>

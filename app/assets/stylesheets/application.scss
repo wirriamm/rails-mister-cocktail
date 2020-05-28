@@ -11,3 +11,19 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+.bg-dark-lg {
+  background: $v-dark-green;
+}
+
+.dull-shadow {
+  text-shadow: 2px 2px 4px #798a75;
+}
+
+.bright-shadow {
+  text-shadow: 1px 1px 1px $neon-green;
+}
+
+.bright-box-shadow {
+  box-shadow: 2px 2px 2px $neon-green;
+}
